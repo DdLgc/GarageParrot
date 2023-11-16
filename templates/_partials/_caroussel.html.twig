@@ -1,13 +1,15 @@
-<div class="container-xl vh-100">
-	<div class="row">
+<div class="container-xxl vh-100 ">
+	<div class="row mt-5">
 		<div class="col-md-10 mx-auto my-5">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+			<div
+				id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
 				{# <ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
+					<li data-target="#myCarousdata-slide-to="0" class="active"></li>
+					<li data-target="#myCarousdata-slide-to="1"></li>
+					<li data-target="#myCarousdata-slide-to="2"></li>
 				</ol> #}
 				<div class="carousel-inner">
+        {# {% for vehicle in vehicles %} #}
 					<div class="carousel-item active">
 						<div class="row">
 							<div class="col-sm-4 border p-2">
@@ -16,7 +18,7 @@
 										<img src="../../../img/voitures/208.jpg " class="img-fluid" alt="">
 									</div>
 									<div class="thumb-content">
-										<h4>208</h4>
+										{# <h4>{{ vehicle.model }}</h4> #}
 										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam.</p>
 										<a href="#" class="btn btn-primary">Contact
 											<i class="fa fa-angle-right"></i>
@@ -147,13 +149,13 @@
 						</div>
 					</div>
 				</div>
-				<a class="carousel-control-prev " href="#myCarousel" data-slide="prev">
-					<i class="fa fa-angle-left bg-primary"></i>
-				</a>
-				<a class="carousel-control-next " href="#myCarousel" data-slide="next">
-					<i class="fa fa-angle-right bg-primary"></i>
-				</a>
 			</div>
 		</div>
 	</div>
+				<a class="carousel-control-prev " href="#myCarousel" data-slide="prev">
+					<i class="fa fa-angle-left  bg-secondary h-50 w-50 text-success z-index-4"></i>
+				</a>
+				<a class="carousel-control-next " href="#myCarousel" data-slide="next">
+					<i class="fa fa-angle-right bg-secondary h-50 w-50 text-success z-index-4"></i>
+				</a>
 </div>

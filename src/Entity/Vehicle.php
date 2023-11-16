@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\VehicleRepository;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -79,12 +80,12 @@ class Vehicle
         return $this;
     }
 
-    public function getYearOfRegistration(): ?\DateTimeInterface
+    public function getYearOfRegistration(): ?DateTime
     {
         return $this->year_of_registration;
     }
 
-    public function setYearOfRegistration(\DateTimeInterface $year_of_registration): static
+    public function setYearOfRegistration(DateTime $year_of_registration): static
     {
         $this->year_of_registration = $year_of_registration;
 
