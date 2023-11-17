@@ -41,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'administrator_id', cascade: ['persist', 'remove'])]
     private ?OpeningGarage $openingGarage = null;
 
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Testimonials::class)]
+    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Testimonial::class)]
     private Collection $testimonials;
 
     #[ORM\OneToOne(mappedBy: 'user_id', cascade: ['persist', 'remove'])]
@@ -133,14 +133,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Testimonials>
+     * @return Collection<int, Testimonial>
      */
     public function getTestimonials(): Collection
     {
         return $this->testimonials;
     }
 
-    public function addTestimonial(Testimonials $testimonial): static
+    public function addTestimonial(Testimonial $testimonial): static
     {
         if (!$this->testimonials->contains($testimonial)) {
             $this->testimonials->add($testimonial);
@@ -150,7 +150,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeTestimonial(Testimonials $testimonial): static
+    public function removeTestimonial(Testimonial $testimonial): static
     {
         if ($this->testimonials->removeElement($testimonial)) {
             // set the owning side to null (unless already changed)
