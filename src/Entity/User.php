@@ -39,7 +39,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Service $service = null;
 
     #[ORM\OneToOne(mappedBy: 'administrator_id', cascade: ['persist', 'remove'])]
-    private ?OpeningGarage $openingGarage = null;
+    private ?Garage $openingGarage = null;
 
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Testimonial::class)]
     private Collection $testimonials;
@@ -98,36 +98,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getService(): ?Service
+    public function getGarage(): ?Garage
     {
-        return $this->service;
+        return $this->Garage;
     }
 
-    public function setService(?Service $service): static
-    {
-        $this->service = $service;
-
-        return $this;
-    }
-
-    public function getOpeningGarage(): ?OpeningGarage
-    {
-        return $this->openingGarage;
-    }
-
-    public function setOpeningGarage(?OpeningGarage $openingGarage): static
+    public function setGarage(?Garage $Garage): static
     {
         // unset the owning side of the relation if necessary
-        if ($openingGarage === null && $this->openingGarage !== null) {
-            $this->openingGarage->setAdministratorId(null);
+        if ($Garage === null && $this->Garage !== null) {
+            $this->Garage->setAdministratorId(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($openingGarage !== null && $openingGarage->getAdministratorId() !== $this) {
-            $openingGarage->setAdministratorId($this);
+        if ($Garage !== null && $Garage->getAdministratorId() !== $this) {
+            $Garage->setAdministratorId($this);
         }
 
-        $this->openingGarage = $openingGarage;
+        $this->Garage = $Garage;
 
         return $this;
     }
