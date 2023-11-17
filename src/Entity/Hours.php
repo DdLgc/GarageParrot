@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\GarageRepository;
+use App\Repository\HoursRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: GarageRepository::class)]
-class Garage
+#[ORM\Entity(repositoryClass: HoursRepository::class)]
+class Hours
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -28,7 +28,7 @@ class Garage
     #[ORM\Column(length: 255)]
     private ?string $closing_hours_pm = null;
 
-    #[ORM\OneToOne(inversedBy: 'Garage', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'Hours', cascade: ['persist', 'remove'])]
     private ?User $administrator_id = null;
 
     public function getId(): ?int

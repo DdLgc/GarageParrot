@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Garage;
+use App\Entity\Hours;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Garage>
+ * @extends ServiceEntityRepository<hours>
  *
- * @method Garage|null find($id, $lockMode = null, $lockVersion = null)
- * @method Garage|null findOneBy(array $criteria, array $orderBy = null)
- * @method Garage[]    findAll()
- * @method Garage[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method hours|null find($id, $lockMode = null, $lockVersion = null)
+ * @method hours|null findOneBy(array $criteria, array $orderBy = null)
+ * @method hours[]    findAll()
+ * @method hours[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class GarageRepository extends ServiceEntityRepository
+class HoursRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Garage::class);
+        parent::__construct($registry, Hours::class);
     }
 
 //    /**
-//     * @return Garage[] Returns an array of Garage objects
+//     * @return hours[] Returns an array of hours objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class GarageRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Garage
+//    public function findOneBySomeField($value): ?hours
 //    {
 //        return $this->createQueryBuilder('o')
 //            ->andWhere('o.exampleField = :val')

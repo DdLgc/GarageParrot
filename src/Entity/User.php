@@ -39,7 +39,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Service $service = null;
 
     #[ORM\OneToOne(mappedBy: 'administrator_id', cascade: ['persist', 'remove'])]
-    private ?Garage $openingGarage = null;
+    private ?Hours $openingHours = null;
 
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Testimonial::class)]
     private Collection $testimonials;
@@ -98,24 +98,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getGarage(): ?Garage
+    public function getHours(): ?Hours
     {
-        return $this->Garage;
+        return $this->Hours;
     }
 
-    public function setGarage(?Garage $Garage): static
+    public function setHours(?Hours $Hours): static
     {
         // unset the owning side of the relation if necessary
-        if ($Garage === null && $this->Garage !== null) {
-            $this->Garage->setAdministratorId(null);
+        if ($Hours === null && $this->Hours !== null) {
+            $this->Hours->setAdministratorId(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($Garage !== null && $Garage->getAdministratorId() !== $this) {
-            $Garage->setAdministratorId($this);
+        if ($Hours !== null && $Hours->getAdministratorId() !== $this) {
+            $Hours->setAdministratorId($this);
         }
 
-        $this->Garage = $Garage;
+        $this->Hours = $Hours;
 
         return $this;
     }
