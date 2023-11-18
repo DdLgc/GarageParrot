@@ -35,17 +35,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
 
-    #[ORM\ManyToOne(inversedBy: 'administrator_id')]
-    private ?Service $service = null;
+    // #[ORM\ManyToOne(inversedBy: 'administrator_id')]
+    // private ?Service $service = null;
 
-    #[ORM\OneToOne(mappedBy: 'administrator_id', cascade: ['persist', 'remove'])]
-    private ?Hours $openingHours = null;
+    // #[ORM\OneToOne(mappedBy: 'administrator_id', cascade: ['persist', 'remove'])]
+    // private ?Hours $openingHours = null;
 
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Testimonial::class)]
     private Collection $testimonials;
 
-    #[ORM\OneToOne(mappedBy: 'user_id', cascade: ['persist', 'remove'])]
-    private ?Contact $contact = null;
+    // #[ORM\OneToOne(mappedBy: 'user_id', cascade: ['persist', 'remove'])]
+    // private ?Contact $contact = null;
 
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Vehicle::class)]
     private Collection $vehicles;
@@ -150,27 +150,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getContact(): ?Contact
-    {
-        return $this->contact;
-    }
-
-    public function setContact(?Contact $contact): static
-    {
-        // unset the owning side of the relation if necessary
-        if ($contact === null && $this->contact !== null) {
-            $this->contact->setUserId(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($contact !== null && $contact->getUserId() !== $this) {
-            $contact->setUserId($this);
-        }
-
-        $this->contact = $contact;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Vehicle>
