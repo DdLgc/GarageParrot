@@ -35,20 +35,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
 
-    // #[ORM\ManyToOne(inversedBy: 'administrator_id')]
-    // private ?Service $service = null;
-
-    // #[ORM\OneToOne(mappedBy: 'administrator_id', cascade: ['persist', 'remove'])]
-    // private ?Hours $openingHours = null;
-
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Testimonial::class)]
     private Collection $testimonials;
-
-    // #[ORM\OneToOne(mappedBy: 'user_id', cascade: ['persist', 'remove'])]
-    // private ?Contact $contact = null;
-
+    
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Vehicle::class)]
     private Collection $vehicles;
+    
+    #[ORM\ManyToOne(mappedBy: 'garage', targetEntity: Garage::class)]
+    private Collection $garage;
 
     public function __construct()
     {
@@ -98,27 +92,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getHours(): ?Hours
-    {
-        return $this->Hours;
-    }
+    // public function getHours(): ?Hours
+    // {
+    //     return $this->Hours;
+    // }
 
-    public function setHours(?Hours $Hours): static
-    {
-        // unset the owning side of the relation if necessary
-        if ($Hours === null && $this->Hours !== null) {
-            $this->Hours->setAdministratorId(null);
-        }
+    // public function setHours(?Hours $Hours): static
+    // {
+    //     // unset the owning side of the relation if necessary
+    //     if ($Hours === null && $this->Hours !== null) {
+    //         $this->Hours->setAdministratorId(null);
+    //     }
 
-        // set the owning side of the relation if necessary
-        if ($Hours !== null && $Hours->getAdministratorId() !== $this) {
-            $Hours->setAdministratorId($this);
-        }
+    //     // set the owning side of the relation if necessary
+    //     if ($Hours !== null && $Hours->getAdministratorId() !== $this) {
+    //         $Hours->setAdministratorId($this);
+    //     }
 
-        $this->Hours = $Hours;
+    //     $this->Hours = $Hours;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Testimonial>
