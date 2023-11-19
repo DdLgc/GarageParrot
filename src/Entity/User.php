@@ -34,21 +34,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
-
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Testimonial::class)]
-    private Collection $testimonials;
     
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Vehicle::class)]
-    private Collection $vehicles;
-    
-    #[ORM\ManyToOne(mappedBy: 'garage', targetEntity: Garage::class)]
+    #[ORM\ManyToOne(inversedBy: 'garage', targetEntity: Garage::class)]
     private Collection $garage;
-
-    public function __construct()
-    {
-        $this->testimonials = new ArrayCollection();
-        $this->vehicles = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -113,67 +101,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     //     return $this;
     // }
-
-    /**
-     * @return Collection<int, Testimonial>
-     */
-    public function getTestimonials(): Collection
-    {
-        return $this->testimonials;
-    }
-
-    public function addTestimonial(Testimonial $testimonial): static
-    {
-        if (!$this->testimonials->contains($testimonial)) {
-            $this->testimonials->add($testimonial);
-            $testimonial->setUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTestimonial(Testimonial $testimonial): static
-    {
-        if ($this->testimonials->removeElement($testimonial)) {
-            // set the owning side to null (unless already changed)
-            if ($testimonial->getUserId() === $this) {
-                $testimonial->setUserId(null);
-            }
-        }
-
-        return $this;
-    }
-
-
-    /**
-     * @return Collection<int, Vehicle>
-     */
-    public function getVehicles(): Collection
-    {
-        return $this->vehicles;
-    }
-
-    public function addVehicle(Vehicle $vehicle): static
-    {
-        if (!$this->vehicles->contains($vehicle)) {
-            $this->vehicles->add($vehicle);
-            $vehicle->setUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeVehicle(Vehicle $vehicle): static
-    {
-        if ($this->vehicles->removeElement($vehicle)) {
-            // set the owning side to null (unless already changed)
-            if ($vehicle->getUserId() === $this) {
-                $vehicle->setUserId(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * A visual identifier that represents this user.
