@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	{% if vehicleDetails is defined %}
+	{% if vehicle is defined %}
 		<table class="table">
 			<thead>
 				<th scope="col">id</th>
@@ -15,19 +15,17 @@
 				<th scope="col">equipment</th>
 			</thead>
 			<tbody>
-			{% for vehicle in vehicles %}
 				<tr>
 					<td>{{ vehicle.id }}</td>
 					<td>{{ vehicle.price }}</td>
 					<td>{{ vehicle.model }}</td>
 					<td>{{ vehicle.mileage }}</td>
-					<td>{{ vehicle.yearOfRegistration }}</td>
+					<td>{{ vehicle.yearOfRegistration | date("m/d/Y") }}</td>
 					<td>{{ vehicle.equipment }}</td>
 				</tr>
-			{% endfor %}
 			</tbody>
 		</table>
-		<a href="{{path('app_details')}}" class="btn btn-primary">Retour a la liste</a>
+		{# <a href="{{path('app_details')}}" class="btn btn-primary">Retour a la liste</a> #}
 	{% else %}
 		<p>Aucun détail de véhicule trouvé.</p>
 	{% endif %}

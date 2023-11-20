@@ -4,38 +4,49 @@ namespace App\Controller;
 
 use App\Entity\Vehicle;
 use App\Repository\VehicleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DetailsController extends AbstractController
 {
-    #[Route('/details', name: 'app_details', methods:['GET'])]
-    public function index(VehicleRepository $vehicleRepo): Response
-    {
-        return $this->render('details/index.html.twig', [
-            'controller_name' => 'DetailsController',
-            'vehicles' => $vehicleRepo->findAll(),
-        ]);
-    }
-
-    // #[Route('/details/{id}', name: 'app_details_show', requirements: ['id'=> '\d+'], methods:['GET'])]
-    // public function show($id): Response
+    // #[Route('/details', name: 'app_details', methods:['GET'])]
+    // public function index(VehicleRepository $vehicleRepo): Response
     // {
-    //     $vehicleRepo = $this->getDoctrine()->getRepository(Vehicle::class)->find($id);
-
-    // return $this->render('details/index.html.twig', [
-    //     'vehicleRepo' => $vehicleRepo,
+    //     return $this->render('details/index.html.twig', [
+    //         'controller_name' => 'DetailsController',
+    //         'vehicles' => $vehicleRepo->findAll(),
     //     ]);
     // }
+
+    #[Route('/details/{id}', name: 'app_details_show', requirements: ['id'=> '\d+'], methods:['GET'])]
+    public function show(Vehicle $vehicle): Response
+    {
+
+    return $this->render('details/index.html.twig', [
+        'vehicle' => $vehicle
+        ]);
+    }
     
     #[Route('/details/create', name: 'app_details_create', methods:['GET', 'POST'])]
-    public function create(): Response
+    public function create(Request $request): Response
     {
-        dd(__METHOD__);
-        // return $this->render('details/index.html.twig', [
-        //     'controller_name' => 'DetailsController',
-        // ]);
+        $vehicle = new Vehicle();
+        $form = $this->createForm(VehicleType::class, $vehicle);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($vehicle);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_details_show', ['id' => $vehicle->getId()]);
+        }
+
+        return $this->render('details/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     #[Route('/details/{id}/edit', name: 'app_details_edit', methods:['GET', 'POST'],requirements: ['id'=> '\d+'])]
