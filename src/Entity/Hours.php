@@ -48,19 +48,11 @@ class Hours
         return $this;
     }
 
-    /**
-     * Get the value of opening_hours_am
-     */ 
     public function getOpening_hours_am()
     {
         return $this->opening_hours_am;
     }
 
-    /**
-     * Set the value of opening_hours_am
-     *
-     * @return  self
-     */ 
     public function setOpening_hours_am($opening_hours_am)
     {
         $this->opening_hours_am = $opening_hours_am;
@@ -68,19 +60,11 @@ class Hours
         return $this;
     }
 
-    /**
-     * Get the value of opening_hours_pm
-     */ 
     public function getOpening_hours_pm()
     {
         return $this->opening_hours_pm;
     }
 
-    /**
-     * Set the value of opening_hours_pm
-     *
-     * @return  self
-     */ 
     public function setOpening_hours_pm($opening_hours_pm)
     {
         $this->opening_hours_pm = $opening_hours_pm;
@@ -88,19 +72,11 @@ class Hours
         return $this;
     }
 
-    /**
-     * Get the value of closing_hours_am
-     */ 
     public function getClosing_hours_am()
     {
         return $this->closing_hours_am;
     }
 
-    /**
-     * Set the value of closing_hours_am
-     *
-     * @return  self
-     */ 
     public function setClosing_hours_am($closing_hours_am)
     {
         $this->closing_hours_am = $closing_hours_am;
@@ -108,19 +84,12 @@ class Hours
         return $this;
     }
 
-    /**
-     * Get the value of closing_hours_pm
-     */ 
     public function getClosing_hours_pm()
     {
         return $this->closing_hours_pm;
     }
 
-    /**
-     * Set the value of closing_hours_pm
-     *
-     * @return  self
-     */ 
+
     public function setClosing_hours_pm($closing_hours_pm)
     {
         $this->closing_hours_pm = $closing_hours_pm;
