@@ -27,7 +27,7 @@ class Testimonial
     private ?bool $moderation = null;
 
     #[ORM\ManyToOne(inversedBy: 'testimonials')]
-    private ?User $user_id = null;
+    private ?Garage $garage = null;
 
     public function getId(): ?int
     {
@@ -82,14 +82,14 @@ class Testimonial
         return $this;
     }
 
-    public function getUserId(): ?User
+    public function getUserId(): ?Garage
     {
-        return $this->user_id;
+        return $this->garage;
     }
 
-    public function setUserId(?User $user_id): static
+    public function setUserId(?Garage $garage): static
     {
-        $this->user_id = $user_id;
+        $this->garage = $garage;
 
         return $this;
     }

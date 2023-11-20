@@ -29,7 +29,7 @@ class Hours
     private ?string $closing_hours_pm = null;
 
     #[ORM\OneToOne(inversedBy: 'Hours', cascade: ['persist', 'remove'])]
-    private ?User $administrator_id = null;
+    private ?Garage $garage = null;
 
     public function getId(): ?int
     {

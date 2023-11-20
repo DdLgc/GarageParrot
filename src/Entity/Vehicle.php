@@ -37,7 +37,7 @@ class Vehicle
     private ?array $pics = null;
 
     #[ORM\ManyToOne(inversedBy: 'vehicles')]
-    private ?User $user_id = null;
+    private ?Garage $garage = null;
 
     public function getId(): ?int
     {
@@ -130,12 +130,12 @@ class Vehicle
 
     public function getUserId(): ?User
     {
-        return $this->user_id;
+        return $this->garage;
     }
 
-    public function setUserId(?User $user_id): static
+    public function setUserId(?User $garage): static
     {
-        $this->user_id = $user_id;
+        $this->garage = $garage;
 
         return $this;
     }
