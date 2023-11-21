@@ -48,7 +48,8 @@ ou
 
 
 
-->On peux se connecter avec un compte qui a pour adresse email foo@foo.com et mtp 1234  
+->On peux se connecter avec un compte qui a pour adresse email foo@foo.com et mtp 1234 
+->On peux aussi rentrer details/4 apres le localhost pour aller chercher un vehicule en bdd 
 
 
 ## Documentation Bootstrap  
