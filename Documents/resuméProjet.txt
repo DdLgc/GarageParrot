@@ -1,0 +1,86 @@
+Résumé 
+
+-> Parlez de votre client
+    -> évoquez son besoin 
+
+-> Faites le lien avec vos fonctionnalités 
+    -> mentionnez les technos choisi (+version)
+
+-> Donnez du contexte 
+    ->durée
+
+max 20 lignes 
+
+--------------------------------------------------
+
+Contenu 
+
+-> introduction 
+    -> Présentez-vous
+-> Résumé
+
+-> rappel des compétenes 
+
+-> Environnement 
+    a. humain gestion de projet 
+    b. technique langages, version, OS, IDE 
+
+-> Schema de données (mcd , uml)
+    cas d'utilisations
+    mentionnez les UserStory
+    maquette (3 web + 3 mobiles)
+
+->Développement 
+    a.données 
+        ->mise en place bdd
+        ->requete de creation de table
+        -> jeu de données 
+        -> utilisateur  (si pas base sqlite)
+            -> root / root => a eviter 
+            -> root / sans mot de passe => a eviter 
+
+    b.back-end 
+        _> init projet 
+        ->git 
+        ->ecriture / lecture / modification / suppression en bdd 
+        ->endpoint (=> porte applicatif pour contacter votre back)
+        -> verification de données
+        -> hash password (bcrypt)
+        -> aspect métier 
+            -> prendre en compte les exigences/ contriantes du client ds le dev
+
+    c. front-end
+        ->init du projet 
+        -> git 
+        -> models 
+        -> css responsive 
+        -> Javascript (modif du DOM avec les filtres)
+                => fetch / ajax / axios 
+        ->sécurité 
+            -> XSS = injection du code JS 
+            -> CSRF = token qui permet de valider que le front a envoyé une trame au back et que c'est bien le mien 
+            -> injection SQL  
+                -> username : ' or 1=1#   (requete a tester pour voir si on peux recup ID)
+                -> ou alors utilisation d'un ORM mais savoir repondre aux question sur l'ORM
+            -> stockage de l'authentification 
+        -> gestion de contenu : depuis le frontend je peux modifier supprimer / une info
+
+Annexe 
+    => toutes les imges qui font plus d'une moitié de page 
+            =>chaque annexe a un titre et faits plus de la moitié d'une page 
+
+--------------------------------------------------
+
+Conslusion
+
+-> prise de recul 
+    ->KISS 
+        -> K : keep (ce que vous aller garder )
+        -> I : Improve (ce que vous devez ameliorer)
+        -> S : start (ce que vous devez commencer : exp git flow)
+        -> S : Stop (ce que vous devez arreter)
+
+-> apport du projet 
+    -> qu'est ce que ca vous a apporter ? 
+        -> reconfort de voter choix ?
+    -> ce que vous voulez faire plus tard ? (Thales alternance / bachelor )

@@ -1,8 +1,60 @@
-# Garage Parrot 
+# Garage Parrot  
+Je suis David Le Gouellec actuellement en formation chez STUDI depuis Avril 2022 en 
+tant que Développeur Web et Web mobile Fullstack. Dans ce readme, je vous propose toutes les démarches 
+à suivre pour l'exécution en local du projet Garage Parrot. Le projet est malheureusement encore en cours veuillez m'en excusez je fais mon possible pour qu'il soit crédible devant un jury, mais toutes remarques sur le peu fonctionnel est bon a prendre 
+Cordialement 
 
-## Site Vitrine d'un garage fictif 
+## Prérequis pour le projet avec Symfony
 
-### Le Garage Parrot est une entreprise de réparation automobile proposant des services de réparation mécanique et de carrosserie. Notre établissement est dirigé par Vincent Parrot, le fondateur de l'entreprise, qui gère activement les opérations et les informations via notre site web.
+```bash
+ php -v
+```  
+```bash
+ composer -v
+```  
+```bash
+ symfony check:requirements
+```  
+[Documentation Symfony](https://symfony.com/doc/current/setup.html)   
+
+## Installation
+```bash
+ git clone https://github.com/DdLgc/GarageParrot.git
+```
+```bash
+ cd garageparrot
+```
+```bash
+ composer install
+```
+
+```bash
+ composer require doctrine/orm
+```
+```bash
+ php bin/console doctrine:database:import GarageParrot\Documents\garageparrot.sql
+```
+
+## Serveur local
+
+```bash
+ symfony server:start
+```  
+ou  
+```bash
+ symfony serve -d
+```   
+[Serveur local](https://symfony.com/doc/5.4/setup/symfony_server.html)  
+
+
+
+->On peux se connecter avec un compte qui a pour adresse email foo@foo.com et mtp 1234  
+
+
+## Documentation Bootstrap  
+[GetBootstrap](https://getbootstrap.com/)  
+[Documentation](https://getbootstrap.com/docs/5.3/getting-started/download/)
+
 
 ## Fonctionnalités clés
 
@@ -18,16 +70,15 @@
 
 - Témoignages Clients : Nous recueillons et affichons les témoignages des clients sur notre site. Les avis sont modérés pour assurer la qualité du contenu.  
 
+
+## Vous trouverez ci-joint les liens utiles pour la creation du site  
 ### Links
-[![Portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://katherineoelsner.com/)  
-[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)  
+
+
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DdLgc/GarageParrot)  
-[![Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/c/SgTjvEZT/61-garage)  
+[![Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/b/69ozFGfD/projet-garage-parrot)  
+[![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?&style=for-the-badge&logo=Canva&logoColor=white)](https://www.canva.com/design/DAFxjK9iKfc/_ZsHvCQPB8QKw1dvVRLOhw/edit)  
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](
 https://www.figma.com/file/fgCCjfhNbPctL6bWLLQA7p/Untitled?type=whiteboard&node-id=0-1&t=Ls2NnPW8p67gPkgd-0)  
-[![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?&style=for-the-badge&logo=Canva&logoColor=white)](https://www.canva.com/design/DAFxjK9iKfc/_ZsHvCQPB8QKw1dvVRLOhw/edit)  
-
-
-
-
-<!-- ( + maniere de faire du local a remettre et creer admin/user ) -->
+[![DbDiagram]( https://img.shields.io/badge/DbDiagram-0d9431)](
+https://dbdiagram.io/d/Garage-Parrot-654ce0c37d8bbd6465da04ce)  

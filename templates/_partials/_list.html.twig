@@ -1,0 +1,26 @@
+{# templates/_partials/list.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Liste des véhicules</h1>
+
+    {% if vehicles is not empty %}
+        <div class="row">
+            {% for vehicle in vehicles %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ asset('path/to/your/images/' ~ vehicle.pic) }}" class="card-img-top img-fluid" alt="Image du véhicule">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ vehicle.modele }}</h5>
+                            <p class="card-text">Année : {{ vehicle.anneeMiseCirculation }}</p>
+                            <p class="card-text">Kilométrage : {{ vehicle.kilometrages }}</p>
+                            <a href="{{ path('vehicle_details', {'id': vehicle.id}) }}" class="btn btn-primary">Détails</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucun véhicule trouvé.</p>
+    {% endif %}
+{% endblock %}
