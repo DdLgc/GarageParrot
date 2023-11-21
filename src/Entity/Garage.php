@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\GarageRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\GarageRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: GarageRepository::class)]
 class Garage
@@ -33,8 +34,11 @@ class Garage
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\OneToMany(mappedBy:'garage', targetEntity: User::class)]
-    private Collection $users;
+    // #[ORM\OneToMany(mappedBy:'garage', targetEntity: Garage::class)]
+    // private Collection $garage;
+
+    #[ORM\OneToMany(targetEntity: Vehicle::class, mappedBy: "garage",)]
+    private $vehicles;
 
 
     public function getId(): ?int

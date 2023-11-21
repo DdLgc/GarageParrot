@@ -36,8 +36,11 @@ class Vehicle
     #[ORM\Column(nullable: true)]
     private ?array $pics = null;
 
-    #[ORM\ManyToOne(inversedBy: 'vehicles')]
-    private ?Garage $garage = null;
+    // #[ORM\ManyToOne(inversedBy: 'vehicles')]
+    // private ?Garage $garage = null;
+    #[ORM\ManyToOne(targetEntity: Garage::class, inversedBy: "vehicles")]
+    #[ORM\JoinColumn(name: "garage_id", referencedColumnName: "id")]
+    private $garage;
 
     public function getId(): ?int
     {

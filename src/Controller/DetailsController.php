@@ -23,6 +23,7 @@ class DetailsController extends AbstractController
     #[Route('/details/{id}', name: 'app_details_show', requirements: ['id'=> '\d+'], methods:['GET'])]
     public function show(Vehicle $vehicle): Response
     {
+        dump($vehicle);
 
     return $this->render('details/index.html.twig', [
         'vehicle' => $vehicle
